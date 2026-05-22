@@ -4,6 +4,11 @@ import com.axity.dinosaurPark.model.dinosaur.CarnivoreDinosaur;
 import com.axity.dinosaurPark.model.dinosaur.Dinosaur;
 import com.axity.dinosaurPark.model.dinosaur.DinosaurDiet;
 import com.axity.dinosaurPark.model.dinosaur.HerbivoreDinosaur;
+import com.axity.dinosaurPark.model.tourist.Tourist;
+import com.axity.dinosaurPark.model.worker.GuideWorker;
+import com.axity.dinosaurPark.model.worker.KepperWorker;
+import com.axity.dinosaurPark.model.worker.TechnicianWorker;
+import com.axity.dinosaurPark.model.worker.Worker;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -20,12 +25,22 @@ public class ParkState
     private final List<HerbivoreDinosaur> herbivoreDinosaurList;
     private final List<CarnivoreDinosaur> carnivoreDinosaurList;
     private final List<Dinosaur> allDinosaurList;
+    private final List<Worker> allWorkersList;
+    private final List<GuideWorker> guideWorkerList;
+    private final List<TechnicianWorker> technicianWorkersList;
+    private final List<KepperWorker> kepperWorkersList;
+    private final List<Tourist> touristsList;
     
     private ParkState()
     {
         herbivoreDinosaurList= new ArrayList<>();
         carnivoreDinosaurList= new ArrayList<>();
         allDinosaurList= new ArrayList<>();
+        allWorkersList= new ArrayList<>();
+        guideWorkerList= new ArrayList<>();
+        technicianWorkersList= new ArrayList<>();
+        kepperWorkersList= new ArrayList<>();
+        touristsList= new ArrayList<>();
     }
     
     public static ParkState getInstance()
@@ -73,5 +88,68 @@ public class ParkState
         
         createAllDinosaurList();
     }
+
+    public List<Dinosaur> getAllDinosaurList()
+    {
+        return allDinosaurList;
+    }
+    
+    private void createAllWorkerList()
+    {
+        allWorkersList.clear();
+        allWorkersList.addAll(guideWorkerList);
+        allWorkersList.addAll(technicianWorkersList);
+        allWorkersList.addAll(kepperWorkersList);
+    }
+    
+    public List<Worker> getAllWorkers()
+    {
+        return allWorkersList;
+    }
+    
+    public void addWorkerToList(Worker newWorker)
+    {
+        switch (newWorker.getJob())
+        {
+            case GUIDES:
+                guideWorkerList.add((GuideWorker) newWorker);
+                break;
+            case TECHNICIAN:
+                technicianWorkersList.add((TechnicianWorker) newWorker);
+                break;
+            default:
+                kepperWorkersList.add((KepperWorker) newWorker);
+                break;
+        }
+        
+        createAllWorkerList();
+    }
+    
+    public List<GuideWorker> getGuidesWorkers()
+    {
+        return guideWorkerList;
+    }
+    
+    public List<TechnicianWorker> getTechnicianWorkers()
+    {
+        return technicianWorkersList;
+    }
+    
+    public List<KepperWorker> getKepperWokers()
+    {
+        return kepperWorkersList;
+    }
+
+    public List<Worker> getWorkersList()
+    {
+        return allWorkersList;
+    }
+
+    public List<Tourist> getTouristsList()
+    {
+        return touristsList;
+    }
+    
+    
     
 }

@@ -5,9 +5,12 @@ import com.axity.dinosaurPark.model.ParkState;
 import com.axity.dinosaurPark.model.dinosaur.Dinosaur;
 import com.axity.dinosaurPark.model.dinosaur.DinosaurDangerLevel;
 import com.axity.dinosaurPark.model.dinosaur.HerbivoreDinosaur;
+import com.axity.dinosaurPark.monitoring.Monitoring;
+import com.axity.dinosaurPark.simulation.Preparation;
 import com.axity.dinosaurPark.zone.ArrivalZone;
 import com.axity.dinosaurPark.zone.CentralHub;
 import com.axity.dinosaurPark.zone.ParkZone;
+import java.util.Random;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 
@@ -22,9 +25,11 @@ public class DinosaurParkApplication
     {
         SpringApplication.run(DinosaurParkApplication.class, args);
         
-        ParkZone zone= new CentralHub();
+        Preparation preparation= new Preparation();
+        preparation.startConfig();
         
-        System.out.println("naldsf  " + zone.getName() + "  dsaf" + zone.getCurrentOcupancy() + " qreq " + zone.getMaxCapacity());
+        Monitoring monitoring= Monitoring.getInstance();
+        monitoring.monitor();
         
         
         
