@@ -1,6 +1,8 @@
+package com.axity.dinosaurPark.model.dinosaur;
 
-package com.axity.dinosaurPark.model;
-
+/**
+ * Definición de un dinosaurio herbívoro
+ **/
 public class HerbivoreDinosaur extends Dinosaur
 {
     

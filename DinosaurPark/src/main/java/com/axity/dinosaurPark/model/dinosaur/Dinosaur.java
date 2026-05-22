@@ -1,7 +1,8 @@
+package com.axity.dinosaurPark.model.dinosaur;
 
-package com.axity.dinosaurPark.model;
-
-
+/**
+ * Clase abstracta que modela a un dinosaurio
+ **/
 public abstract class Dinosaur
 {
     private final int id;
@@ -23,7 +24,7 @@ public abstract class Dinosaur
         this.feedingCostPerDay = feedingCostPerDay;
     }       
     
-    // Métodos concretos — iguales para todos
+    // Métodos comunes para todos los dinosaurios
     public DinosaurDiet getDinosaurDiet()
     {
         return this.diet;
@@ -34,6 +35,12 @@ public abstract class Dinosaur
         return this.dangerLevel;
     }
     
+    public DinosaurStatus getDinosaurStatus()
+    {
+        return this.status;
+    }
+    
+    //Estos metódos definen el estado de un dinosaurio 
     public void escape()           
     { 
         status = DinosaurStatus.ESCAPED;     
@@ -41,14 +48,9 @@ public abstract class Dinosaur
     
     public void recapture()        
     { 
-        status = DinosaurStatus.RECAPTURED;  
+        status = DinosaurStatus.IN_ENCLOSURE;  
     }
     
-    public void returnToEnclosure()
-    { 
-        status = DinosaurStatus.IN_ENCLOSURE;
-    }
-
     @Override
     public String toString()
     {

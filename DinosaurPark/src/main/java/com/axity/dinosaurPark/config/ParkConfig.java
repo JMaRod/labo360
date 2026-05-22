@@ -1,11 +1,14 @@
-
 package com.axity.dinosaurPark.config;
 
 import java.io.IOException;
 import java.io.InputStream;
 import java.util.Properties;
 
-
+/**
+ * Esta clase se encarga de leer los valores del archivo de propiedades, en este
+ * caso se usa el patrón singleton porque solamente necesitamos que un objeto
+ * acceda al archivo 
+ **/
 public class ParkConfig
 {
     private static ParkConfig instance;
